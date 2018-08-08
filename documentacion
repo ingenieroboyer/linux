@@ -1,0 +1,40 @@
+1.- PROGRAMAR EL LANZAMIENTO DEL SCRIPT
+    1.1 Se crea el directorio que queremos destinar para las tareas
+    Mkdir /pi/tareas_programadas
+
+    1.2  Se programa el lanzamiento del archivo .sh que contendrá las instrucciones a ejecutar  
+
+    cd /pi/tareas_programadas
+    Crontab -e
+1 19 * * * python  /pi/prog.python/tareas_programadas/riego.py
+
+
+NOTA: “riego.py” es el programa que activa el riego por un tiempo determinado.
+
+2.- ELIMINAR EL CRONTAB 
+
+crontab -r
+
+
+
+Ejemplo
+Crear el archivo para llenar la información
+#nano /home/archivoResultado
+
+Crear el comando en crontab
+    #crontab -e
+    #* * * * * /home/consulta.sh
+
+Crear el archivo que con el comando que se quiere ejecutar
+    #nano /home/consulta.sh
+
+Darle los permisos
+    #chmod 700 consulta.sh
+
+3. PARA QUE UN SCRIP SE EJECUTE AL INICIO
+Entramos a la terminal y tecleamos lo siguiente:
+sudo nano /etc/rc.d/rc.local
+Agregamos al final de la linea:
+/home/proyectosbeta/script_inicial.sh
+Guardamos (control + o) y luego cerramos el editor de texto (control + x). Volvemos a teclear en la consola:
+sudo chmod a+x /etc/rc.d/rc.local
